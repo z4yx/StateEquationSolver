@@ -39,9 +39,15 @@ public class Calculator {
             util.evaluate("Tr="+Tr);
             util.evaluate("w="+Tr);
 
-            a = util.evaluate(fa);
+            if(fa == null)
+                a = 0;
+            else
+                a = util.evaluate(fa);
 
-            b = util.evaluate(fb);
+            if(fb == null)
+                b = 0;
+            else
+                b = util.evaluate(fb);
 
             Log.v("double", "a="+a+",b="+b);
 
