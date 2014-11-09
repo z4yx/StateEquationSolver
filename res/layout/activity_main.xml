@@ -20,70 +20,185 @@
             android:text="物质参数"
             android:gravity="center_horizontal" />
 
-        <Spinner
-            android:id="@+id/choose_substance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:visibility="invisible" />
+
+                <Spinner
+                    android:id="@+id/choose_substance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkSubstance2"
+                        android:layout_gravity="center_vertical" />
+
+                    <Spinner
+                        android:id="@+id/choose_substance2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                    </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tc" />
+
+                <EditText
+                    android:id="@+id/edit_Tc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+                <EditText
+                    android:id="@+id/edit_Tc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6"
+                    android:enabled="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pc"/>
+
+                <EditText
+                    android:id="@+id/edit_Pc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+                <EditText
+                    android:id="@+id/edit_Pc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:enabled="false"
+                    android:ems="6" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zc"/>
+
+                <EditText
+                    android:id="@+id/edit_Zc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+                <EditText
+                    android:id="@+id/edit_Zc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ω"/>
+
+                <EditText
+                    android:id="@+id/edit_w"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+                <EditText
+                    android:id="@+id/edit_w2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+            </TableRow>
+        </TableLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/mixOptions"
+            android:visibility="invisible">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tc" />
+                android:text="y1"/>
 
             <EditText
-                android:id="@+id/edit_Tc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal"
-                android:ems="6" />
+                android:inputType="numberDecimal"
+                android:ems="3"
+                android:id="@+id/editY1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pc"/>
+                android:text="y2"/>
 
             <EditText
-                android:id="@+id/edit_Pc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal"
-                android:ems="6" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
-
+                android:inputType="numberDecimal"
+                android:ems="3"
+                android:id="@+id/editY2" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ω"/>
+                android:text="方式(a)"
+                android:id="@+id/textView5" />
 
-            <EditText
-                android:id="@+id/edit_w"
+            <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal"
-                android:ems="6" />
-            <!---->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Tr"/>-->
-
-            <!--<EditText-->
-                <!--android:id="@+id/edit_Tr"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:inputType="numberSigned|numberDecimal"-->
-                <!--android:ems="6" />-->
+                android:id="@+id/mixMethodA"
+                android:textOn="二次"
+                android:textOff="线性" />
 
         </LinearLayout>
 
@@ -147,24 +262,25 @@
 
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="选择方程"
-            android:gravity="center_horizontal" />
+            android:layout_height="fill_parent">
 
-        <Spinner
-            android:id="@+id/choose_equation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="选择方程"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="计算"
-            android:gravity="center_horizontal" />
+            <Spinner
+                android:id="@+id/choose_equation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -173,19 +289,30 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用T,Vm计算P"
-                android:id="@+id/calc_P" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="计算"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用T,P计算Vm"
-                android:id="@+id/calc_Vm" />
+                android:text="计算P"
+                android:id="@+id/calc_P"
+                android:layout_weight="1" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="计算Vm"
+                android:id="@+id/calc_Vm"
+                android:layout_weight="1" />
+
         </LinearLayout>
 
         <TextView

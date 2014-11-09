@@ -20,14 +20,19 @@ import java.util.regex.Pattern;
  */
 public class Calculator {
 
+    final static public int MIX_LIN = 1, MIX_SQR = 2;
+
     static Pattern mResultPattern = Pattern.compile("([a-zA-z]+)->([^,}]+)");
 
-    double a, b;
-    public void prepareSubstance(String Tc, String Pc, String w, String T, int equation){
+    double a, b, Zc, Tc;
+    public void prepareSubstance(String Tc, String Pc, String Zc, String w, String T, int equation){
         String fa = EquationDb.getFormulaA(equation);
         String fb = EquationDb.getFormulaB(equation);
 
         String Tr = "((" + T + ")/(" + Tc + "))";
+
+        this.Tc = Double.valueOf(Tc);
+        this.Zc = Double.valueOf(Zc);
 
         try {
             EvalDouble util = new EvalDouble(false);
@@ -116,5 +121,28 @@ public class Calculator {
             }
         });
         calc.run();
+    }
+
+    private double calcMix(double q1, double q2, int type, double tc1, double tc2, double zc1, double zc2, double y1, double y2) throws Exception {
+        if(type == MIX_LIN){
+            double r = (y1*q1+y2*q2)/(y1+y2);
+            Log.i("calcMix","r="+r);
+            return r;
+        }else if(type == MIX_SQR){
+            double z = (zc1+zc2)/2;
+            double k = Math.pow( (tc1*tc2/(tc1+tc2)*2),z);
+            Log.i("calcMix","z="+z+",k="+k);
+            return y1*y1*q1+2*y1*y2*Math.sqrt(q1*q2)*k+y2*y2*q2;
+        }else{
+            throw new Exception("Wrong type");
+        }
+    }
+
+    public void mixWith(Calculator c2, int type_a, int type_b, String y1, String y2) throws Exception {
+        Log.d("mixWith", "type_a="+type_a+",type_b="+type_b+",y1="+y1+",y2="+y2);
+        double Y1 = Double.valueOf(y1);
+        double Y2 = Double.valueOf(y2);
+        a = calcMix(a, c2.a, type_a, Tc, c2.Tc, Zc, c2.Zc, Y1, Y2);
+        b = calcMix(b, c2.b, type_b, Tc, c2.Tc, Zc, c2.Zc, Y1, Y2);
     }
 }

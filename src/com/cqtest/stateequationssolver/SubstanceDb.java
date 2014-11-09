@@ -29,7 +29,7 @@ public class SubstanceDb extends SimpleCursorAdapter {
         AssetsDatabaseManager mg = AssetsDatabaseManager.getManager();
         SQLiteDatabase db = mg.getDatabase("data2.db");
 
-        Cursor c = db.query("substance", new String[]{"Tc","Pc","w"}, "_id="+_id, null, null, null, null, null);
+        Cursor c = db.query("substance", new String[]{"Tc","Pc","w","Zc"}, "_id="+_id, null, null, null, null, null);
         if(c.moveToFirst()){
             double params[] = new double[c.getColumnCount()];
             for (int i=0; i<params.length; i++)
