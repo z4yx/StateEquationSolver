@@ -42,7 +42,7 @@ public class Calculator {
             util.evaluate("Tc="+Tc);
             util.evaluate("Pc="+Pc);
             util.evaluate("Tr="+Tr);
-            util.evaluate("w="+Tr);
+            util.evaluate("w="+w);
 
             if(fa == null)
                 a = 0;
