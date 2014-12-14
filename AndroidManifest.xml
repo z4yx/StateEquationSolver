@@ -37,6 +37,10 @@
             android:name=".GasHSActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".FugacityActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

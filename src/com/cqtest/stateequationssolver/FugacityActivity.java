@@ -1,7 +1,7 @@
 package com.cqtest.stateequationssolver;
 
+import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import butterknife.InjectView;
@@ -10,14 +10,7 @@ import butterknife.OnClick;
 /**
  * Created by zhang on 14-12-14.
  */
-public class GasHSActivity extends GasActivity {
-
-    @InjectView(R.id.edit_Hid)
-    EditText mEditHid;
-    @InjectView(R.id.edit_Sid)
-    EditText mEditSid;
-    @InjectView(R.id.edit_P0)
-    EditText mEditP0;
+public class FugacityActivity extends GasActivity {
 
     @InjectView(R.id.textResult)
     TextView mResult;
@@ -35,15 +28,14 @@ public class GasHSActivity extends GasActivity {
 
     @Override
     protected void initContentView() {
-        equation_filter=EquationDb.FILTER_STATE;
-        setContentView(R.layout.activity_gas_hs);
+        equation_filter=EquationDb.FILTER_Fugacity;
+        setContentView(R.layout.activity_gas_fugacity);
     }
 
-    @OnClick({R.id.calc_H,R.id.calc_S})
-    void onCalcHS(View v)
-    {
-        int equ = 1;
-        assert EquationDb.getNames(EquationDb.FILTER_STATE)[equ].equals("RK");
+    @OnClick(R.id.calc_fugacity)
+    void onCalc(View v){
+
+        int equ = EquationDb.item2equ(mChooseEquation.getSelectedItemPosition(), equation_filter);
 
         try {
             Calculator c = new Calculator();
@@ -65,31 +57,23 @@ public class GasHSActivity extends GasActivity {
                         mEditT.getText().toString(),
                         equ
                 );
-                    c.mixWith(c2,
-                            (mMixMethodA.isChecked() ? Calculator.MIX_SQR : Calculator.MIX_LIN),
-                            Calculator.MIX_LIN,
-                            mEditY1.getText().toString(),
-                            mEditY2.getText().toString()
-                    );
+                c.mixWith(c2,
+                        (mMixMethodA.isChecked() ? Calculator.MIX_SQR : Calculator.MIX_LIN),
+                        Calculator.MIX_LIN,
+                        mEditY1.getText().toString(),
+                        mEditY2.getText().toString()
+                );
             }
-            String H_S_id;
-            boolean isH;
-            if(v.getId() == R.id.calc_H){
-                H_S_id = mEditHid.getText().toString();
-                isH = true;
-            }else{
-                H_S_id = mEditSid.getText().toString();
-                isH = false;
-            }
-            c.calcHS(mEditT.getText().toString(),
+
+            c.calcPhi(equ,
+                    mEditT.getText().toString(),
                     mEditP.getText().toString(),
                     mEditVm.getText().toString(),
-                    H_S_id,
-                    mEditP0.getText().toString(),
-                    isH, mHandler, v.getId());
+                    mHandler, v.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

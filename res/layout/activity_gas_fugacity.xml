@@ -268,66 +268,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hid: "/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal"
-                android:id="@+id/edit_Hid"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sid: " />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_Sid"
-                android:inputType="numberSigned|numberDecimal"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P0: " />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_P0"
-                android:inputType="numberSigned|numberDecimal"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:visibility="gone"
-            >
+            android:layout_height="fill_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -337,20 +278,11 @@
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_vertical" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="RK"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_vertical" />
-
             <Spinner
                 android:id="@+id/choose_equation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:visibility="gone" />
+                android:layout_weight="1" />
         </LinearLayout>
 
 
@@ -360,28 +292,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
-            <TextView
+            <Button
+                style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="计算"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_vertical" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="计算H"
-                android:id="@+id/calc_H"
-                android:layout_weight="1" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="计算S"
-                android:id="@+id/calc_S"
+                android:id="@+id/calc_fugacity"
                 android:layout_weight="1" />
 
         </LinearLayout>

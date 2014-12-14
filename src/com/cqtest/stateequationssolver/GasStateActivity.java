@@ -26,6 +26,7 @@ public class GasStateActivity extends GasActivity {
 
     @Override
     protected void initContentView() {
+        equation_filter=EquationDb.FILTER_STATE;
         setContentView(R.layout.activity_gas_state);
     }
 

@@ -128,6 +128,41 @@ public class Calculator {
         }
     }
 
+    public void calcPhi(final int equation,final String T, final String P, final String V ,final Handler handler, final int operation)
+    {
+        try{
+            DoubleEvaluator util = new DoubleEvaluator(false);
+            util.clearVariables();
+            util.evaluate("R=8.3144621");
+            util.evaluate("T="+T);
+            util.evaluate("P="+P);
+            util.evaluate("V="+V);
+            util.evaluate("a="+a);
+            util.evaluate("b="+b);
+
+            util.evaluate("Z=P*V/R/T");
+            String formula = EquationDb.getFormulaPhi(equation);
+            Log.v("formula", formula);
+            double phi = util.evaluate(formula);
+            double f = phi*Double.valueOf(P);
+
+            String result =
+                    "Φ="+phi+"\n" +
+                    "f="+f;
+            handler.obtainMessage(1, operation, 0, result).sendToTarget();
+        }catch (SyntaxError e) {
+            // catch Symja parser errors here
+            Log.e("evaluate", "SyntaxError|" + e.getMessage());
+            handler.obtainMessage(2, operation, 0, e.getMessage()).sendToTarget();
+        } catch (MathException me) {
+            // catch Symja math errors here
+            Log.e("evaluate", "MathException|" + me.getMessage());
+            handler.obtainMessage(3, operation, 0, me.getMessage()).sendToTarget();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void solveEquation(final int equation, final String unknown, final String known, final String T, final Handler handler, final int operation)
     {
         Thread calc = new Thread(new Runnable() {

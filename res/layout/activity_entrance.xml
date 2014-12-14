@@ -24,5 +24,10 @@
             android:layout_height="wrap_content"
             android:text="HS计算"
             android:id="@+id/entrance_hs" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="逸度计算"
+            android:id="@+id/entrance_fugacity"/>
     </LinearLayout>
 </RelativeLayout>

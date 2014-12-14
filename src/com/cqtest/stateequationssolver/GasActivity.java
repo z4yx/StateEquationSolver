@@ -73,6 +73,7 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
         }
     });
 
+    int equation_filter = -1;
     abstract protected void gotError(String mathException, Object obj);
     abstract protected void gotResult(Object obj, int operation);
     abstract protected void initContentView();
@@ -89,7 +90,7 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
         mChooseSubstance2.setEnabled(false);
         mEnable2.setOnCheckedChangeListener(this);
 		
-		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames(EquationDb.FILTER_STATE));
+		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames(equation_filter));
 		mEquationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mChooseEquation.setAdapter(mEquationAdapter);
 
