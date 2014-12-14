@@ -185,6 +185,45 @@ public class Calculator {
         }
     }
 
+
+    public void calcMixPhiRK(final String T, final String P, final String V,final double a1,final double a2,final double b1,final double b2, double y1, double y2,final Handler handler, final int operation)
+    {
+        try{
+            DoubleEvaluator util = new DoubleEvaluator(false);
+            util.clearVariables();
+            util.evaluate("R=8.3144621");
+            util.evaluate("T="+T);
+            util.evaluate("V="+V);
+            util.evaluate("P="+P);
+
+            util.evaluate("a1="+a1);
+            util.evaluate("b1="+b1);
+            util.evaluate("b2="+b2);
+            util.evaluate("a2="+a2);
+            util.evaluate("y1="+y1);
+            util.evaluate("y2="+y2);
+            util.evaluate("am="+a);
+            util.evaluate("bm="+b);
+
+            double phi1 = util.evaluate("Exp[Log[V/(V-bm)]+b1/(V-bm)-2*(y1*a1+y2*(a1*a2)^0.5)/R/T^1.5/bm*Log[(V+bm)/V]+am*b1/R/T^1.5/bm^2*(Log[(V+bm)/V]-bm/(V+bm))-Log[P*V/R/T]]");
+            double phi2 = util.evaluate("Exp[Log[V/(V-bm)]+b2/(V-bm)-2*(y2*a2+y1*(a1*a2)^0.5)/R/T^1.5/bm*Log[(V+bm)/V]+am*b2/R/T^1.5/bm^2*(Log[(V+bm)/V]-bm/(V+bm))-Log[P*V/R/T]]");
+
+            String result =
+                    "Φ1="+phi1+"\n" +
+                    "Φ2="+phi2+"\n";
+            handler.obtainMessage(1, operation, 0, result).sendToTarget();
+        }catch (SyntaxError e) {
+            // catch Symja parser errors here
+            Log.e("evaluate", "SyntaxError|" + e.getMessage());
+            handler.obtainMessage(2, operation, 0, e.getMessage()).sendToTarget();
+        } catch (MathException me) {
+            // catch Symja math errors here
+            Log.e("evaluate", "MathException|" + me.getMessage());
+            handler.obtainMessage(3, operation, 0, me.getMessage()).sendToTarget();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void calcPhi(final int equation,final String T, final String P, final String V ,final Handler handler, final int operation)
     {
         try{
@@ -296,5 +335,15 @@ public class Calculator {
         double Y2 = Double.valueOf(y2);
         a = calcMix(a, c2.a, type_a, Tc, c2.Tc, Zc, c2.Zc, Y1, Y2);
         b = calcMix(b, c2.b, type_b, Tc, c2.Tc, Zc, c2.Zc, Y1, Y2);
+    }
+
+    public double get_a()
+    {
+        return a;
+    }
+
+    public double get_b()
+    {
+        return b;
     }
 }

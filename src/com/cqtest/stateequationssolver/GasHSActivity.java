@@ -49,7 +49,7 @@ public class GasHSActivity extends GasActivity {
     void onCalcHS(View v)
     {
         int equ = 1;
-        assert EquationDb.getNames(EquationDb.FILTER_STATE)[equ].equals("RK");
+        assert EquationDb.getEquationName(equ).equals("RK");
 
         try {
             Calculator c = new Calculator();

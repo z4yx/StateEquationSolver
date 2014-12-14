@@ -77,6 +77,8 @@ public class EquationDb {
             return f_Fugacity[item];
         return -1;
     }
+
+    public static final String getEquationName(int i) { return names[i]; }
 	
 	public static final String getEquation(int i)
 	{
