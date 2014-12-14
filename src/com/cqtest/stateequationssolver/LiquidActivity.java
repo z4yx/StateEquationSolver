@@ -1,10 +1,5 @@
 package com.cqtest.stateequationssolver;
 
-import org.matheclipse.core.eval.EvalUtilities;
-import org.matheclipse.core.interfaces.IExpr;
-import org.matheclipse.parser.client.SyntaxError;
-import org.matheclipse.parser.client.math.MathException;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -15,18 +10,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -100,7 +89,7 @@ public class LiquidActivity extends Activity implements CompoundButton.OnChecked
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_gas_state);
 
         AssetsDatabaseManager.initManager(getApplication());
 

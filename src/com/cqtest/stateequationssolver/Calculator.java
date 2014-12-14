@@ -67,6 +67,64 @@ public class Calculator {
         }
     }
 
+    public void calcHS(final String T, final String P, final String V ,final String _HorSid, final String _P0, boolean isH, final Handler handler, final int operation)
+    {
+        String result = new String();
+        try{
+            EvalUtilities util = new EvalUtilities(false, true);
+            util.evaluate("R=8.3144621");
+            util.evaluate("T="+T);
+            util.evaluate("P="+P);
+            util.evaluate("V="+V);
+            util.evaluate("a="+a);
+            util.evaluate("b="+b);
+//            double A = util.evaluate("(a/(R^2*T^2.5))^0.5");
+//            double B = util.evaluate("b/(R*T)");
+
+            util.evaluate("A=(a/(R^2*T^2.5))^0.5");
+            util.evaluate("B=b/(R*T)");
+            if(isH) {
+                double HR = Double.valueOf(util.evaluate("N(R*T*(P*V/R/T-1-3*A^2*Log(1+B*P/(P*V/R/T))/(2*B)))").toString());
+                result += "HR=" + HR + "\n";
+                String Hid = _HorSid.trim();
+                if (!Hid.isEmpty()) {
+                    try {
+                        double Hid_d = Double.valueOf(Hid);
+                        result += "H=" + (Hid_d + HR);
+                    } catch (Exception e) {
+
+                    }
+                }
+            }else{
+                double SR = Double.valueOf(util.evaluate("N(R*(-A^2/(2*B)*Log(1+B*P/(P*V/R/T))+Log(P*V/R/T-B*P)))").toString());
+                result += "SR=" + SR + "\n";
+                String Sid = _HorSid.trim();
+                String P0 = _P0.trim();
+                if (!Sid.isEmpty() && !P0.isEmpty()) {
+                    try {
+                        double Sid_d = Double.valueOf(Sid);
+                        double P0_d = Double.valueOf(P0);
+                        util.evaluate("P0="+P0_d);
+                        result += "S=" + util.evaluate((Sid_d + SR)+"-R*Log(P/P0)");
+                    } catch (Exception e) {
+
+                    }
+                }
+
+            }
+            handler.obtainMessage(1, operation, 0, result).sendToTarget();
+        }catch (SyntaxError e) {
+            // catch Symja parser errors here
+            Log.e("evaluate", "SyntaxError|" + e.getMessage());
+            handler.obtainMessage(2, operation, 0, e.getMessage());
+        } catch (MathException me) {
+            // catch Symja math errors here
+            Log.e("evaluate", "MathException|" + me.getMessage());
+            handler.obtainMessage(3, operation, 0, me.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void solveEquation(final int equation, final String unknown, final String known, final String T, final Handler handler, final int operation)
     {

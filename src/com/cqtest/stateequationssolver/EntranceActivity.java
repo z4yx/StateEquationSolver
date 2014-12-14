@@ -21,12 +21,15 @@ public class EntranceActivity extends Activity {
         ButterKnife.inject(this);
     }
 
-    @OnClick({R.id.entrance_gas, R.id.entrance_liquid})
+    @OnClick({R.id.entrance_gas, R.id.entrance_liquid, R.id.entrance_hs})
     void onClickEntry(View v){
         Intent intent = new Intent();
         switch (v.getId()){
             case R.id.entrance_gas:
-                intent.setClass(this, GasActivity.class);
+                intent.setClass(this, GasStateActivity.class);
+                break;
+            case R.id.entrance_hs:
+                intent.setClass(this, GasHSActivity.class);
                 break;
             default:
                 return;

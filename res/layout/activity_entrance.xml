@@ -19,5 +19,10 @@
             android:layout_height="wrap_content"
             android:text="液体计算"
             android:id="@+id/entrance_liquid" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HS计算"
+            android:id="@+id/entrance_hs" />
     </LinearLayout>
 </RelativeLayout>
