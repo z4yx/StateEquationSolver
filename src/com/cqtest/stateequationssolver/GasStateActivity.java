@@ -1,7 +1,6 @@
 package com.cqtest.stateequationssolver;
 
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +49,7 @@ public class GasStateActivity extends GasActivity {
 
         }
         try {
-            int equ = mChooseEquation.getSelectedItemPosition();
+            int equ = EquationDb.item2equ(mChooseEquation.getSelectedItemPosition(), EquationDb.FILTER_STATE);
             Calculator c = new Calculator();
             c.prepareSubstance(
                     mEditTc.getText().toString(),

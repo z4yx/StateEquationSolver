@@ -2,7 +2,6 @@ package com.cqtest.stateequationssolver;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 import android.app.Activity;
@@ -16,12 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public abstract class GasActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
 	ArrayAdapter<String> mEquationAdapter;
@@ -95,7 +89,7 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
         mChooseSubstance2.setEnabled(false);
         mEnable2.setOnCheckedChangeListener(this);
 		
-		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames());
+		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames(EquationDb.FILTER_STATE));
 		mEquationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mChooseEquation.setAdapter(mEquationAdapter);
 

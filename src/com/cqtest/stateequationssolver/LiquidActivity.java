@@ -98,7 +98,7 @@ public class LiquidActivity extends Activity implements CompoundButton.OnChecked
         mChooseSubstance2.setEnabled(false);
         mEnable2.setOnCheckedChangeListener(this);
 		
-		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames());
+		mEquationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, EquationDb.getNames(EquationDb.FILTER_STATE));
 		mEquationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mChooseEquation.setAdapter(mEquationAdapter);
 
@@ -164,7 +164,7 @@ public class LiquidActivity extends Activity implements CompoundButton.OnChecked
 
         }
         try {
-            int equ = mChooseEquation.getSelectedItemPosition();
+            int equ = EquationDb.item2equ(mChooseEquation.getSelectedItemPosition(),EquationDb.FILTER_STATE);
             Calculator c = new Calculator();
             c.prepareSubstance(
                     mEditTc.getText().toString(),
