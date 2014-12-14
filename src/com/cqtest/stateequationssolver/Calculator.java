@@ -116,11 +116,11 @@ public class Calculator {
         }catch (SyntaxError e) {
             // catch Symja parser errors here
             Log.e("evaluate", "SyntaxError|" + e.getMessage());
-            handler.obtainMessage(2, operation, 0, e.getMessage());
+            handler.obtainMessage(2, operation, 0, e.getMessage()).sendToTarget();
         } catch (MathException me) {
             // catch Symja math errors here
             Log.e("evaluate", "MathException|" + me.getMessage());
-            handler.obtainMessage(3, operation, 0, me.getMessage());
+            handler.obtainMessage(3, operation, 0, me.getMessage()).sendToTarget();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -167,11 +167,11 @@ public class Calculator {
                 } catch (SyntaxError e) {
                     // catch Symja parser errors here
                     Log.e("evaluate", "SyntaxError|" + e.getMessage());
-                    handler.obtainMessage(2, operation, 0, e.getMessage());
+                    handler.obtainMessage(2, operation, 0, e.getMessage()).sendToTarget();
                 } catch (MathException me) {
                     // catch Symja math errors here
                     Log.e("evaluate", "MathException|" + me.getMessage());
-                    handler.obtainMessage(3, operation, 0, me.getMessage());
+                    handler.obtainMessage(3, operation, 0, me.getMessage()).sendToTarget();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
