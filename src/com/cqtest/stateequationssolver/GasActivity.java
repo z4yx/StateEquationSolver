@@ -34,7 +34,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
+public class GasActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
 	ArrayAdapter<String> mEquationAdapter;
     SubstanceDb mSubstanceAdapter, mSubstanceAdapter2;
 	@InjectView(R.id.choose_equation) Spinner mChooseEquation;
