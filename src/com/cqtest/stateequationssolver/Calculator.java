@@ -8,6 +8,7 @@ import org.matheclipse.core.eval.EvalDouble;
 import org.matheclipse.core.expression.F;
 import org.matheclipse.core.interfaces.IExpr;
 import org.matheclipse.parser.client.SyntaxError;
+import org.matheclipse.parser.client.eval.DoubleEvaluator;
 import org.matheclipse.parser.client.math.MathException;
 
 import java.util.ArrayList;
@@ -71,7 +72,8 @@ public class Calculator {
     {
         String result = new String();
         try{
-            EvalUtilities util = new EvalUtilities(false, true);
+            DoubleEvaluator util = new DoubleEvaluator(false);
+            util.clearVariables();
             util.evaluate("R=8.3144621");
             util.evaluate("T="+T);
             util.evaluate("P="+P);
@@ -84,7 +86,7 @@ public class Calculator {
             util.evaluate("A=(a/(R^2*T^2.5))^0.5");
             util.evaluate("B=b/(R*T)");
             if(isH) {
-                double HR = Double.valueOf(util.evaluate("N(R*T*(P*V/R/T-1-3*A^2*Log(1+B*P/(P*V/R/T))/(2*B)))").toString());
+                double HR = (util.evaluate("R*T*(P*V/R/T-1-3*A^2*Log[1+B*P/(P*V/R/T)]/(2*B))"));
                 result += "HR=" + HR + "\n";
                 String Hid = _HorSid.trim();
                 if (!Hid.isEmpty()) {
@@ -96,7 +98,7 @@ public class Calculator {
                     }
                 }
             }else{
-                double SR = Double.valueOf(util.evaluate("N(R*(-A^2/(2*B)*Log(1+B*P/(P*V/R/T))+Log(P*V/R/T-B*P)))").toString());
+                double SR = (util.evaluate("R*(-A^2/(2*B)*Log[1+B*P/(P*V/R/T)]+Log[P*V/R/T-B*P])"));
                 result += "SR=" + SR + "\n";
                 String Sid = _HorSid.trim();
                 String P0 = _P0.trim();
@@ -105,7 +107,7 @@ public class Calculator {
                         double Sid_d = Double.valueOf(Sid);
                         double P0_d = Double.valueOf(P0);
                         util.evaluate("P0="+P0_d);
-                        result += "S=" + util.evaluate((Sid_d + SR)+"-R*Log(P/P0)");
+                        result += "S=" + util.evaluate((Sid_d + SR)+"-R*Log[P/P0]");
                     } catch (Exception e) {
 
                     }
