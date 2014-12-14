@@ -2,6 +2,7 @@ package com.cqtest.stateequationssolver;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import butterknife.InjectView;
@@ -21,6 +22,11 @@ public class GasHSActivity extends GasActivity {
 
     @InjectView(R.id.textResult)
     TextView mResult;
+
+    @InjectView(R.id.radio_RK)
+    RadioButton mMethodRK;
+    @InjectView(R.id.radio_Virial)
+    RadioButton mMethodVirial;
 
     @Override
     protected void gotError(String mathException, Object obj) {
@@ -81,13 +87,23 @@ public class GasHSActivity extends GasActivity {
                 H_S_id = mEditSid.getText().toString();
                 isH = false;
             }
-            c.calcHS(mEditT.getText().toString(),
-                    mEditP.getText().toString(),
-                    mEditVm.getText().toString(),
-                    H_S_id,
-                    mEditP0.getText().toString(),
-                    isH, mHandler, v.getId());
-
+            if(mMethodRK.isChecked()) {
+                c.calcHS(mEditT.getText().toString(),
+                        mEditP.getText().toString(),
+                        mEditVm.getText().toString(),
+                        H_S_id,
+                        mEditP0.getText().toString(),
+                        isH, mHandler, v.getId());
+            }else{
+                c.calcHS2(mEditT.getText().toString(),
+                        mEditP.getText().toString(),
+                        mEditTc.getText().toString(),
+                        mEditPc.getText().toString(),
+                        mEditW.getText().toString(),
+                        H_S_id,
+                        mEditP0.getText().toString(),
+                        isH, mHandler, v.getId());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

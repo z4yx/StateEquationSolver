@@ -127,6 +127,63 @@ public class Calculator {
             e.printStackTrace();
         }
     }
+    public void calcHS2(final String T, final String P, final String Tc, final String Pc ,final String w, final String _HorSid, final String _P0, boolean isH, final Handler handler, final int operation)
+    {
+        String result = new String();
+        try{
+            DoubleEvaluator util = new DoubleEvaluator(false);
+            util.clearVariables();
+            util.evaluate("R=8.3144621");
+            util.evaluate("T="+T);
+            util.evaluate("P="+P);
+            util.evaluate("w="+w);
+
+            util.evaluate("Tc="+Tc);
+            util.evaluate("Tr=T/Tc");
+            util.evaluate("Pr=P/"+Pc);
+
+            if(isH) {
+                double HR = (util.evaluate("R*T*(-Pr*Tc*((0.6752/Tr^2.6-(0.083-0.422/Tr^1.6)/Tr)+w*(0.7224/Tr^5.2-(0.139-0.172/Tr^4.2)/Tr)))"));
+                result += "HR=" + HR + "\n";
+                String Hid = _HorSid.trim();
+                if (!Hid.isEmpty()) {
+                    try {
+                        double Hid_d = Double.valueOf(Hid);
+                        result += "H=" + (Hid_d + HR);
+                    } catch (Exception e) {
+
+                    }
+                }
+            }else{
+                double SR = (util.evaluate("R*(-Pr*((0.6752/Tr^2.6)+w*(0.7224/Tr^5.2)))"));
+                result += "SR=" + SR + "\n";
+                String Sid = _HorSid.trim();
+                String P0 = _P0.trim();
+                if (!Sid.isEmpty() && !P0.isEmpty()) {
+                    try {
+                        double Sid_d = Double.valueOf(Sid);
+                        double P0_d = Double.valueOf(P0);
+                        util.evaluate("P0="+P0_d);
+                        result += "S=" + util.evaluate((Sid_d + SR)+"-R*Log[P/P0]");
+                    } catch (Exception e) {
+
+                    }
+                }
+
+            }
+            handler.obtainMessage(1, operation, 0, result).sendToTarget();
+        }catch (SyntaxError e) {
+            // catch Symja parser errors here
+            Log.e("evaluate", "SyntaxError|" + e.getMessage());
+            handler.obtainMessage(2, operation, 0, e.getMessage()).sendToTarget();
+        } catch (MathException me) {
+            // catch Symja math errors here
+            Log.e("evaluate", "MathException|" + me.getMessage());
+            handler.obtainMessage(3, operation, 0, me.getMessage()).sendToTarget();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void calcPhi(final int equation,final String T, final String P, final String V ,final Handler handler, final int operation)
     {

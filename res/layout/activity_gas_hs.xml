@@ -325,10 +325,45 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="方法"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RK"
+                    android:id="@+id/radio_RK"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Virial"
+                    android:id="@+id/radio_Virial" />
+                </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:visibility="gone"
             >
-
+<!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -344,7 +379,7 @@
                 android:text="RK"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_vertical" />
-
+-->
             <Spinner
                 android:id="@+id/choose_equation"
                 android:layout_width="match_parent"
