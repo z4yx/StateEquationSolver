@@ -92,6 +92,22 @@
                     android:inputType="numberSigned|numberDecimal"
                     android:ems="6" />
             </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vc"/>
+
+                <EditText
+                    android:id="@+id/edit_Vc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:ems="6" />
+            </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -123,8 +139,9 @@
                 android:id="@+id/textView2" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
                 android:id="@+id/edit_T"
                 android:layout_weight="1"
                 android:text="273.15" />
@@ -143,8 +160,9 @@
                 android:id="@+id/textView" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
                 android:id="@+id/edit_P"
                 android:layout_weight="1"
                 android:text="101325" />
@@ -159,18 +177,114 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vm: "
+                android:text="V: "
                 android:id="@+id/textView3" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
                 android:id="@+id/edit_Vm"
                 android:layout_weight="1"
                 android:text="1" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vs: " />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
+                android:id="@+id/edit_Vs"
+                android:layout_weight="1"
+                android:text="0" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ps: " />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
+                android:id="@+id/edit_Ps"
+                android:layout_weight="1"
+                android:text="0" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ρs: " />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
+                android:id="@+id/edit_PhoS"
+                android:layout_weight="1"
+                android:text="0" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TR: " />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
+                android:id="@+id/edit_TR"
+                android:layout_weight="1"
+                android:text="0" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VR: " />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal"
+                android:id="@+id/edit_VR"
+                android:layout_weight="1"
+                android:text="0" />
+
+        </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -211,7 +325,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="计算"
-                android:id="@+id/calc_Vm"
+                android:id="@+id/calc"
                 android:layout_weight="1" />
 
         </LinearLayout>

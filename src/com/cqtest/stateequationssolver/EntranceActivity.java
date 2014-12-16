@@ -28,6 +28,9 @@ public class EntranceActivity extends Activity {
             case R.id.entrance_gas:
                 intent.setClass(this, GasStateActivity.class);
                 break;
+            case R.id.entrance_liquid:
+                intent.setClass(this, LiquidActivity.class);
+                break;
             case R.id.entrance_hs:
                 intent.setClass(this, GasHSActivity.class);
                 break;

@@ -68,6 +68,47 @@ public class Calculator {
         }
     }
 
+
+    public void calcLiquid(String Tc, String Pc, String Zc, String Vc, String w, String T, String V, String P,String TR,String VR,String Ps,String Vs,String PhoS, int equation, final Handler handler) {
+
+
+        try {
+            EvalDouble util = new EvalDouble(false);
+//            EvalUtilities util = new EvalUtilities(false, true);
+            util.clearVariables();
+            util.evaluate("R=8.3144621");
+            util.evaluate("Tc="+Tc);
+            util.evaluate("Pc="+Pc);
+            util.evaluate("Zc="+Zc);
+            util.evaluate("Vc="+Vc);
+            util.evaluate("w="+w);
+            util.evaluate("T="+T);
+            util.evaluate("V="+V);
+            util.evaluate("P="+P);
+            util.evaluate("Tr=T/Tc");
+            util.evaluate("TrR="+TR+"/Tc");
+            util.evaluate("VR="+VR);
+            util.evaluate("Ps="+Ps);
+            util.evaluate("Vs="+Vs);
+            util.evaluate("PhoS="+PhoS);
+
+            double result = util.evaluate(EquationDb.getEquation(equation));
+
+            handler.obtainMessage(1, -1, 0, result).sendToTarget();
+
+        }catch (SyntaxError e) {
+            // catch Symja parser errors here
+            Log.e("evaluate", "SyntaxError|" + e.getMessage());
+            handler.obtainMessage(2, -1, 0, e.getMessage()).sendToTarget();
+        } catch (MathException me) {
+            // catch Symja math errors here
+            Log.e("evaluate", "MathException|" + me.getMessage());
+            handler.obtainMessage(3, -1, 0, me.getMessage()).sendToTarget();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void calcHS(final String T, final String P, final String V ,final String _HorSid, final String _P0, boolean isH, final Handler handler, final int operation)
     {
         String result = new String();

@@ -35,6 +35,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name=".LiquidActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".GasHSActivity"
             android:label="@string/app_name" >
         </activity>
