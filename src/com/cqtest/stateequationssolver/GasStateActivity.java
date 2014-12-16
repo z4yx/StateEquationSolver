@@ -18,8 +18,6 @@ public class GasStateActivity extends GasActivity {
     @InjectView(R.id.textResult)
     TextView mResult;
 
-
-
     protected void gotError(String mathException, Object obj) {
         mResult.setText(mathException+"\n"+obj);
     }
@@ -102,11 +100,24 @@ public class GasStateActivity extends GasActivity {
         }
         if(values == null)
             return;
+        double vm=0;
         for(String v : values){
             if(v.contains("I"))
                 continue;
             v=v.trim();
+            if(operation==R.id.calc_Vm){
+                try {
+                    double t = Double.valueOf(v);
+                    if(t > vm)
+                        vm=t;
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
             finalResult += v + "\n";
+        }
+        if(vm != 0) {
+            ((SolverApplication)getApplication()).setV(vm);
         }
         mResult.setText(finalResult);
     }

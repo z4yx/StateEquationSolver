@@ -99,6 +99,52 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
 
         mSubstanceAdapter2 = new SubstanceDb(this);
         mChooseSubstance2.setAdapter(mSubstanceAdapter2);
+
+        final SolverApplication app = (SolverApplication)getApplication();
+        if(app.getV() != 0)
+            mEditVm.setText(String.valueOf(app.getV()));
+        if(app.getP() != 0)
+            mEditP.setText(String.valueOf(app.getP()));
+        if(app.getT() != 0)
+            mEditT.setText(String.valueOf(app.getT()));
+
+        mEditP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    try {
+                        app.setP(Double.valueOf(mEditP.getText().toString()));
+                    }catch (Exception e){
+
+                    }
+                }
+            }
+        });
+
+        mEditT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    try {
+                        app.setT(Double.valueOf(mEditT.getText().toString()));
+                    }catch (Exception e){
+
+                    }
+                }
+            }
+        });
+        mEditVm.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    try {
+                        app.setV(Double.valueOf(mEditVm.getText().toString()));
+                    }catch (Exception e){
+
+                    }
+                }
+            }
+        });
 	}
 
 	 @OnItemSelected(R.id.choose_equation)
@@ -149,4 +195,6 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
             findViewById(R.id.mixOptions).setVisibility(b ? View.VISIBLE : View.INVISIBLE);
         }
     }
+
+
 }
