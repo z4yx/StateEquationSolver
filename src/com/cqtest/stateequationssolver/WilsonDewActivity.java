@@ -14,6 +14,6 @@ public class WilsonDewActivity extends WilsonBubbleActivity {
     @Override
     protected double calc_yi(double xi,double gi,double pi,double fi,double p,double fiv)
     {
-        return xi*1/(gi+pi+fi/(p*fiv));
+        return xi*1/(gi*pi*fi/(p*fiv));
     }
 }

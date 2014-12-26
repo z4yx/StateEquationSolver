@@ -2,6 +2,7 @@ package com.cqtest.stateequationssolver;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -152,6 +153,17 @@ public class WilsonBubbleActivity extends GasActivity {
 //        c[1]=222.65;c[2]=228.0;
 //        a1=0.08417;
 //        a2=0.95143;
+        for(int i=1;i<=2;i++){
+            Log.v("dump", "tc[]=" + tc[i]);
+            Log.v("dump", "pc[]=" + pc[i]);
+            Log.v("dump", "w[]=" + w[i]);
+            Log.v("dump", "aa[]=" + aa[i]);
+            Log.v("dump", "bb[]=" + bb[i]);
+            Log.v("dump", "c[]=" + c[i]);
+            Log.v("dump", "a12[]=" + a12[i]);
+        }
+        Log.v("dump", "p=" + p);
+        Log.v("dump", "x1=" + x1);
 
         double tr[] = new double[3], pr[] = new double[3], fisat[] = new double[3],
                 fiv[] = new double[3],psat[] = new double[3], b[] = new double[3],
@@ -206,7 +218,7 @@ public class WilsonBubbleActivity extends GasActivity {
 
     protected double calc_yi(double xi,double gi,double pi,double fi,double p,double fiv)
     {
-        return xi*(gi+pi+fi/(p*fiv));
+        return xi*(gi*pi*fi/(p*fiv));
     }
 
     protected String mGamaMethodNames[] = new String[]{"S-H","Van Laar","Margules","Symmetric","Flory Huggins","Wilson","NRTL"};
