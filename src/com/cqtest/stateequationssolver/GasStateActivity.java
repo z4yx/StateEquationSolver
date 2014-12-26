@@ -114,10 +114,12 @@ public class GasStateActivity extends GasActivity {
                     e.printStackTrace();
                 }
             }
-            finalResult += v + "\n";
+//            finalResult += v + "\n";
         }
         if(vm != 0) {
+            finalResult += vm + "\n";
             ((SolverApplication)getApplication()).setV(vm);
+            mEditVm.setText(String.valueOf(vm));
         }
         mResult.setText(finalResult);
     }
