@@ -2,10 +2,7 @@ package com.cqtest.stateequationssolver;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import butterknife.ButterKnife;
@@ -21,7 +18,7 @@ public class EntranceActivity extends Activity {
         ButterKnife.inject(this);
     }
 
-    @OnClick({R.id.entrance_gas, R.id.entrance_liquid, R.id.entrance_hs,R.id.entrance_fugacity})
+    @OnClick({R.id.entrance_gas, R.id.entrance_liquid, R.id.entrance_hs,R.id.entrance_fugacity,R.id.entrance_bubble,R.id.entrance_dew})
     void onClickEntry(View v){
         Intent intent = new Intent();
         switch (v.getId()){
@@ -36,6 +33,12 @@ public class EntranceActivity extends Activity {
                 break;
             case R.id.entrance_fugacity:
                 intent.setClass(this, FugacityActivity.class);
+                break;
+            case R.id.entrance_bubble:
+                intent.setClass(this, WilsonBubbleActivity.class);
+                break;
+            case R.id.entrance_dew:
+                intent.setClass(this, WilsonDewActivity.class);
                 break;
             default:
                 return;

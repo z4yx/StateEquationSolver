@@ -29,5 +29,15 @@
             android:layout_height="wrap_content"
             android:text="逸度计算"
             android:id="@+id/entrance_fugacity"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="泡点计算"
+            android:id="@+id/entrance_bubble"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="露点计算"
+            android:id="@+id/entrance_dew"/>
     </LinearLayout>
 </RelativeLayout>

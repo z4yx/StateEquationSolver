@@ -78,6 +78,8 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
     abstract protected void gotResult(Object obj, int operation);
     abstract protected void initContentView();
 
+    protected void postActivityCreate(){}
+
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -145,6 +147,7 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
                 }
             }
         });
+        postActivityCreate();
 	}
 
 	 @OnItemSelected(R.id.choose_equation)
