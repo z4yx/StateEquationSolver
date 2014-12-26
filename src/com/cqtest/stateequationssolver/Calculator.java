@@ -184,7 +184,7 @@ public class Calculator {
             util.evaluate("Pr=P/"+Pc);
 
             if(isH) {
-                double HR = (util.evaluate("R*T*(-Pr*Tc*((0.6752/Tr^2.6-(0.083-0.422/Tr^1.6)/Tr)+w*(0.7224/Tr^5.2-(0.139-0.172/Tr^4.2)/Tr)))"));
+                double HR = (util.evaluate("R*T*(-Pr*((0.6752/Tr^2.6-(0.083-0.422/Tr^1.6)/Tr)+w*(0.7224/Tr^5.2-(0.139-0.172/Tr^4.2)/Tr)))"));
                 result += "HR=" + HR + "\n";
                 String Hid = _HorSid.trim();
                 if (!Hid.isEmpty()) {
