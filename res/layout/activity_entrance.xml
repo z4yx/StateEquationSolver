@@ -32,6 +32,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="活度系数计算"
+            android:id="@+id/entrance_activity"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="泡点计算"
             android:id="@+id/entrance_bubble"/>
         <Button

@@ -92,9 +92,9 @@ public class WilsonBubbleActivity extends GasActivity {
         a12[2]=Double.valueOf(mEdit_a2.getText().toString());
     }
 
-    void startCalcThread()
+    protected boolean preStartCalcThread(double tc[],double pc[],double w[] ,double aa[],double bb[],double c[],double a12[], double p,double x1,LiquidTheory calcGama)
     {
-
+        return false;
     }
 
     @OnClick(R.id.calc_Y)
@@ -110,30 +110,39 @@ public class WilsonBubbleActivity extends GasActivity {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     mResult.setText("计算中...");
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                    if(!preStartCalcThread(
+                        tc,pc,w,aa,bb,c,
+                        a12,
+                        Double.valueOf(mEditP.getText().toString()),
+                        Double.valueOf(mEdit_X.getText().toString()),
+                        method))
+                    {
 
-                            double T =
-                                    0;
-                            try {
-                                T = calcWilson(
-                                        tc,pc,w,aa,bb,c,
-                                        a12,
-                                        Double.valueOf(mEditP.getText().toString()),
-                                        Double.valueOf(mEdit_X.getText().toString()),
-                                        method
-                                );
-                                mHandler.obtainMessage(1, "T=" + T).sendToTarget();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
 
-//                                mResult.setText("T=" + T);
-                            } catch (Exception e) {
-                                mHandler.obtainMessage(3, e.getMessage()).sendToTarget();
-//                                mResult.setText(e.getMessage());
+                                double T =
+                                        0;
+                                try {
+                                    T = calcWilson(
+                                            tc, pc, w, aa, bb, c,
+                                            a12,
+                                            Double.valueOf(mEditP.getText().toString()),
+                                            Double.valueOf(mEdit_X.getText().toString()),
+                                            method
+                                    );
+                                    mHandler.obtainMessage(1, "T=" + T).sendToTarget();
+
+                                    //                                mResult.setText("T=" + T);
+                                } catch (Exception e) {
+                                    mHandler.obtainMessage(3, e.getMessage()).sendToTarget();
+                                    //                                mResult.setText(e.getMessage());
+                                }
+
                             }
-
-                        }
-                    }).start();
+                        }).start();
+                    }
                 }
             });
         }catch (Exception e){

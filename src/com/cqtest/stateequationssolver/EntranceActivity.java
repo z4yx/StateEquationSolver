@@ -18,7 +18,7 @@ public class EntranceActivity extends Activity {
         ButterKnife.inject(this);
     }
 
-    @OnClick({R.id.entrance_gas, R.id.entrance_liquid, R.id.entrance_hs,R.id.entrance_fugacity,R.id.entrance_bubble,R.id.entrance_dew})
+    @OnClick({R.id.entrance_gas, R.id.entrance_liquid, R.id.entrance_hs,R.id.entrance_fugacity,R.id.entrance_bubble,R.id.entrance_dew,R.id.entrance_activity})
     void onClickEntry(View v){
         Intent intent = new Intent();
         switch (v.getId()){
@@ -39,6 +39,9 @@ public class EntranceActivity extends Activity {
                 break;
             case R.id.entrance_dew:
                 intent.setClass(this, WilsonDewActivity.class);
+                break;
+            case R.id.entrance_activity:
+                intent.setClass(this, ActivityCoefficientActivity.class);
                 break;
             default:
                 return;

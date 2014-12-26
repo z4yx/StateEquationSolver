@@ -54,6 +54,10 @@
             android:name=".WilsonDewActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".ActivityCoefficientActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
