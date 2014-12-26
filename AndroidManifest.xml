@@ -32,31 +32,31 @@
         </activity>
         <activity
             android:name=".GasStateActivity"
-            android:label="@string/app_name" >
+            android:label="气体计算" >
         </activity>
         <activity
             android:name=".LiquidActivity"
-            android:label="@string/app_name" >
+            android:label="液体计算" >
         </activity>
         <activity
             android:name=".GasHSActivity"
-            android:label="@string/app_name" >
+            android:label="HS计算" >
         </activity>
         <activity
             android:name=".FugacityActivity"
-            android:label="@string/app_name" >
+            android:label="逸度计算" >
         </activity>
         <activity
             android:name=".WilsonBubbleActivity"
-            android:label="@string/app_name" >
+            android:label="泡点计算" >
         </activity>
         <activity
             android:name=".WilsonDewActivity"
-            android:label="@string/app_name" >
+            android:label="露点计算" >
         </activity>
         <activity
             android:name=".ActivityCoefficientActivity"
-            android:label="@string/app_name" >
+            android:label="活度系数计算" >
         </activity>
     </application>
 
