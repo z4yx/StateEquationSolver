@@ -73,6 +73,33 @@ public class WilsonBubbleActivity extends GasActivity {
         mChooseGamaMethod.setAdapter(mChooseGamaAdapter);
     }
 
+    @Override
+    protected void postSubstanceSelected(String name, boolean substance2) {
+        Log.v("postSubstanceSelected", "name: "+name);
+        double[] result = SubstanceDb.getSubstanceAntoine(name);
+        if(substance2){
+            if(result != null) {
+                mEdit_A2.setText(String.valueOf(result[0]));
+                mEdit_B2.setText(String.valueOf(result[1]));
+                mEdit_C2.setText(String.valueOf(result[2]));
+            }else{
+                mEdit_A2.setText("");
+                mEdit_B2.setText("");
+                mEdit_C2.setText("");
+            }
+        }else{
+            if(result != null) {
+                mEdit_A.setText(String.valueOf(result[0]));
+                mEdit_B.setText(String.valueOf(result[1]));
+                mEdit_C.setText(String.valueOf(result[2]));
+            }else{
+                mEdit_A.setText("");
+                mEdit_B.setText("");
+                mEdit_C.setText("");
+            }
+        }
+    }
+
     private void fetchParams(double tc[],double pc[],double w[] ,double aa[],double bb[],double c[],double a12[])
     {
         tc[1] = Double.valueOf(mEditTc.getText().toString());
@@ -150,6 +177,14 @@ public class WilsonBubbleActivity extends GasActivity {
         }
     }
 
+    double calcAntoine(double t, double A,double B,double C){
+        if(A>0){
+            return Math.pow(10, A - B / (t - 273.15 + C)) / 760 * 101325;
+        }else{
+            return Math.pow(10,-52.23*B/t+C)/ 760 * 101325;
+        }
+    }
+
     private double calcWilson(double tc[],double pc[],double w[] ,double aa[],double bb[],double c[],double a12[], double p,double x1,LiquidTheory calcGama,double y[]) throws Exception {
         double r=8.314, t = 200;
 //        p=101325;
@@ -196,7 +231,7 @@ public class WilsonBubbleActivity extends GasActivity {
             //计算B
             bm = Math.pow(x1, 2) * b[1] + 2 * x[1] * x[2] * Math.pow(Math.sqrt(b[1] * b[2]), 2) + Math.pow(x[2], 2) * b[2];
             for (int i = 1; i <= 2; i++) {
-                psat[i] = Math.pow(10, aa[i] - bb[i] / (t - 273.15 + c[i])) / 760 * 101325; // aa / bb为Antoine公式中A / B
+                psat[i] = calcAntoine(t,aa[i],bb[i],c[i]); // aa / bb为Antoine公式中A / B
                 //计算饱和蒸汽压
                 fisat[i] = Math.exp(b[i] * psat[i] / (r * t));
                 // printf("%lf %lf %lf\n", b[i], psat[i], fisat[i]);

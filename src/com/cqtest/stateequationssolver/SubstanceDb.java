@@ -39,4 +39,25 @@ public class SubstanceDb extends SimpleCursorAdapter {
         c.close();
         return null;
     }
+
+    public String getItemName(int pos)
+    {
+        return ((Cursor)getItem(pos)).getString(0);
+    }
+
+    public static double[] getSubstanceAntoine(String name)
+    {
+        AssetsDatabaseManager mg = AssetsDatabaseManager.getManager();
+        SQLiteDatabase db = mg.getDatabase("data2.db");
+
+        Cursor c = db.query("antoine", new String[]{"A","B","C"}, "name='"+name+"'", null, null, null, null, null);
+        if(c.moveToFirst()){
+            double params[] = new double[c.getColumnCount()];
+            for (int i=0; i<params.length; i++)
+                params[i] = c.getDouble(i);
+            return params;
+        }
+        c.close();
+        return null;
+    }
 }

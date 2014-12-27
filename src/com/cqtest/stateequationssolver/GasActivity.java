@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public abstract class GasActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
@@ -169,6 +170,7 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
              mEditW.setText(Double.toString(params[2]));
              mEditZc.setText(Double.toString(params[3]));
          }
+         postSubstanceSelected(mSubstanceAdapter.getItemName(position), false);
 	 }
 
     @OnItemSelected(R.id.choose_substance2)
@@ -184,8 +186,13 @@ public abstract class GasActivity extends Activity implements CompoundButton.OnC
             mEditW2.setText(Double.toString(params[2]));
             mEditZc2.setText(Double.toString(params[3]));
         }
+        postSubstanceSelected(mSubstanceAdapter2.getItemName(position), true);
     }
 
+    protected void postSubstanceSelected(String name, boolean substance2)
+    {
+
+    }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
