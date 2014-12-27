@@ -475,7 +475,7 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="计算X"
+                android:text="计算"
                 android:id="@+id/calc_Y"
                 android:layout_weight="1" />
 

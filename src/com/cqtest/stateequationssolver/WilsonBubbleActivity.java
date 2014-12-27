@@ -122,17 +122,17 @@ public class WilsonBubbleActivity extends GasActivity {
                             @Override
                             public void run() {
 
-                                double T =
-                                        0;
+                                double T = 0, y[] = new double[3];
                                 try {
                                     T = calcWilson(
                                             tc, pc, w, aa, bb, c,
                                             a12,
                                             Double.valueOf(mEditP.getText().toString()),
                                             Double.valueOf(mEdit_X.getText().toString()),
-                                            method
+                                            method,
+                                            y
                                     );
-                                    mHandler.obtainMessage(1, "T=" + T).sendToTarget();
+                                    mHandler.obtainMessage(1, String.format("T=%.6f    %.6f:%.6f", T, y[1],y[2])).sendToTarget();
 
                                     //                                mResult.setText("T=" + T);
                                 } catch (Exception e) {
@@ -150,7 +150,7 @@ public class WilsonBubbleActivity extends GasActivity {
         }
     }
 
-    private double calcWilson(double tc[],double pc[],double w[] ,double aa[],double bb[],double c[],double a12[], double p,double x1,LiquidTheory calcGama) throws Exception {
+    private double calcWilson(double tc[],double pc[],double w[] ,double aa[],double bb[],double c[],double a12[], double p,double x1,LiquidTheory calcGama,double y[]) throws Exception {
         double r=8.314, t = 200;
 //        p=101325;
 //        x1=0.2;
@@ -177,7 +177,7 @@ public class WilsonBubbleActivity extends GasActivity {
         double tr[] = new double[3], pr[] = new double[3], fisat[] = new double[3],
                 fiv[] = new double[3],psat[] = new double[3], b[] = new double[3],
                 f0[] = new double[3], f1[] = new double[3], gama[] = new double[3],
-                y[] = new double[3], x[] = new double[3];
+                x[] = new double[3];
         do {
             double bm;
             t = t + 0.001;
@@ -266,7 +266,9 @@ public class WilsonBubbleActivity extends GasActivity {
 
                     done.onClick(dialogInterface,i);
                 }
-            }).show();
+            })
+                    .setNegativeButton("取消",null)
+                   .show();
         }
 
         @Override
@@ -311,7 +313,9 @@ public class WilsonBubbleActivity extends GasActivity {
 
                     done.onClick(dialogInterface,i);
                 }
-            }).show();
+            })
+                    .setNegativeButton("取消",null)
+                    .show();
         }
         @Override
         protected void calc_gama(double[] gama, double t,  double[] x, double[] a) {
@@ -345,7 +349,9 @@ public class WilsonBubbleActivity extends GasActivity {
 
                     done.onClick(dialogInterface,i);
                 }
-            }).show();
+            })
+                    .setNegativeButton("取消",null)
+                    .show();
         }
 
         @Override
